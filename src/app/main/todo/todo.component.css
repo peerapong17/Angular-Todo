@@ -1,0 +1,30 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main-container{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.list{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-container{
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

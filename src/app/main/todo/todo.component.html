@@ -1,0 +1,15 @@
+<div class="container">
+  <app-nav-bar></app-nav-bar>
+  <div class="main-container">
+    <div class="todo-container">
+      <app-form></app-form>
+      <div class="list">
+        <app-list *ngFor="let todo of todoService.todoList; let i = index" [index]="i" [id]="todo._id!" [task]="todo.task" [isCompleted]="todo.isCompleted"></app-list>
+      </div>
+    </div>
+    <form>
+      <label for="data">Date:</label>
+      <input type="date" id="data" name="data" />
+    </form>
+  </div>
+</div>

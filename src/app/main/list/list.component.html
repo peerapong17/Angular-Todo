@@ -1,0 +1,19 @@
+<span class="list-container">
+  <div >
+    <input type="checkbox" id="vehicle1" (change)="onUpdate()" name="vehicle1" [(ngModel)]="isCompleted">
+    <span *ngIf="!isEditing; else elseBlock">{{task}}</span>
+  </div>
+  <ng-template #elseBlock>
+    <input type="text" [(ngModel)]="task">
+  </ng-template>
+  <div>
+    <button *ngIf="!isEditing; else elseBtnEdit" class="btn-edit" (click)="onEdit()">Edit</button>
+    <ng-template #elseBtnEdit>
+      <button class="btn-edit" (click)="onUpdate()">Update</button>
+    </ng-template>
+    <button *ngIf="!isEditing; else elseBtnDelete" class="btn-delete" (click)="onDelete()">Delete</button>
+    <ng-template #elseBtnDelete>
+      <button class="btn-delete" (click)="onCancel()">Cancel</button>
+    </ng-template>
+  </div>
+</span>

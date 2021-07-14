@@ -1,0 +1,30 @@
+.list-container {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgb(223, 223, 223);
+  box-shadow: 2px 3px rgb(207, 207, 207);
+  border-radius: 12px;
+}
+
+.btn-edit {
+  box-sizing: border-box;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 70%;
+}
+
+.btn-delete {
+  box-sizing: border-box;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 70%;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
