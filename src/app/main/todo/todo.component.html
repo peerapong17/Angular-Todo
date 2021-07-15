@@ -3,9 +3,13 @@
   <div class="main-container">
     <div class="todo-container">
       <app-form></app-form>
-      <div class="list">
-        <app-list *ngFor="let todo of todoService.todoList; let i = index" [index]="i" [id]="todo._id!" [task]="todo.task" [isCompleted]="todo.isCompleted"></app-list>
+
+      <div class="list" *ngIf="todoService.todoList.todos.length !== 0; else second">
+        <app-list *ngFor="let todo of todoService.todoList.todos; let i = index" [index]="i" [id]="todo._id!"
+          [task]="todo.task" [isCompleted]="todo.isCompleted"></app-list>
       </div>
+      <ng-template #second><span class="loading">Loding...</span></ng-template>
+      <!-- <ng-template #third>There is no task...</ng-template> -->
     </div>
     <form>
       <label for="data">Date:</label>

@@ -3,16 +3,16 @@
     <div class="login-box">
         <div class="input-box">
             <label for="username">Username:</label>
-            <input type="email" autocomplete="off" name="username" />
+            <input id="username" type="email" autocomplete="off" name="username" [(ngModel)]="user.username"/>
         </div>
         <div class="input-box">
             <label for="username">Password:</label>
-            <input type="password" autocomplete="off" name="username" />
+            <input id="password" type="password" autocomplete="off" name="password" [(ngModel)]="user.password" />
         </div>
         <div class="account-box">
             <span class="account">Don't have account ?</span>
             <span (click)="register()" class="register">Register</span>
         </div>
-        <button>Login</button>
+        <button (click)="login()">Login</button>
     </div>
 </div>

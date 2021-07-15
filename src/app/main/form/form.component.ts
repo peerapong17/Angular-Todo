@@ -18,12 +18,10 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(value: String) {
-    // Don't use this method
-    // this.todos.task = value
-    // use this method instead
     this.todos = {
       task: value,
       isCompleted: false,
+      userId: this.todoService.todoList.user._id
     };
 
     this.todoService.createTodo(this.todos);
