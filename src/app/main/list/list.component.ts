@@ -8,11 +8,11 @@ import { Todo } from 'src/app/services/todo.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  @Input() task: String = '';
-  @Input() isCompleted: Boolean = false;
-  @Input() id: String = '';
+  @Input() task: string = '';
+  @Input() isCompleted: boolean = false;
+  @Input() id: string = '';
   @Input() index: number = 0;
-  isEditing: Boolean = false;
+  isEditing: boolean = false;
   data:Todo = {
     task: '',
     isCompleted: false

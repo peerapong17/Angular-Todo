@@ -9,11 +9,10 @@
           [task]="todo.task" [isCompleted]="todo.isCompleted"></app-list>
       </div>
       <ng-template #second><span class="loading">Loding...</span></ng-template>
-      <!-- <ng-template #third>There is no task...</ng-template> -->
     </div>
     <form>
       <label for="data">Date:</label>
-      <input type="date" id="data" name="data" />
+      <input type="date" id="data" name="data" (change)="onDateChange()"  [(ngModel)]="date" />
     </form>
   </div>
 </div>

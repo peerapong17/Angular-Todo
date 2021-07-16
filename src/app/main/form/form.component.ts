@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(value: String) {
+  onSubmit(value: string) {
     this.todos = {
       task: value,
       isCompleted: false,
