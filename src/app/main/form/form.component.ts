@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
-import { Todo } from 'src/app/services/todo.service';
+import { TodoTask } from 'src/app/services/todo.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  todos: Todo = {
+  todos: TodoTask = {
     task: '',
     isCompleted: false,
   };

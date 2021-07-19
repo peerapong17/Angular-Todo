@@ -1,5 +1,5 @@
 <div class="input-container">
-    <form #myForm="ngForm" (ngSubmit)="onSubmit(todo.value); myForm.resetForm()">
+    <form class="form-group" #myForm="ngForm" (ngSubmit)="onSubmit(todo.value); myForm.resetForm()">
         <input type="text" name="todo" autocomplete="off" #todo/>
         <button >Add</button>
     </form>

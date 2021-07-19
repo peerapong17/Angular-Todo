@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
-import { Todo } from 'src/app/services/todo.service';
+import { TodoTask } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   @Input() id: string = '';
   @Input() index: number = 0;
   isEditing: boolean = false;
-  data:Todo = {
+  data:TodoTask = {
     task: '',
     isCompleted: false
   }
@@ -31,12 +31,14 @@ export class ListComponent implements OnInit {
       isCompleted: this.isCompleted
     }
     this.isEditing = !this.isEditing
-    this.todoService.updateTodo(this.id, this.index, this.data)
+    this.todoService.updateTodo(this.id, this.data)
   }
 
   onDelete() {
     this.todoService.deleteTodo(this.id, this.index)
   }
 
-  onCancel() {}
+  onCancel() {
+    this.isEditing = !this.isEditing
+  }
 }
