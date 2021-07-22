@@ -1,18 +1,31 @@
 <div class="container">
     <span class="welcome">Welcome</span>
-    <div class="login-box">
+    <form [formGroup]="userForm" class="login-box">
         <div class="input-box">
             <label for="username">Username:</label>
-            <input id="username" type="email" autocomplete="off" name="username" [(ngModel)]="user.username"/>
+            <input [ngClass]="{invalid: isUsernameEmpty}" [ngClass]="{invalid: username.dirty && username.touched && username.errors}" formControlName="username" id="username" type="email" autocomplete="off" name="username" [(ngModel)]="user.username"/>
+            <ng-container *ngIf="username.dirty && username.touched && username.errors">
+                <span *ngIf="username.errors.pattern" class="error-message">Email is not valid</span>
+            </ng-container>
+            <ng-container *ngIf="isUsernameEmpty && username.errors">
+                <span *ngIf="username.errors.required" class="error-message">Username is required</span>
+            </ng-container>
         </div>
         <div class="input-box">
             <label for="username">Password:</label>
-            <input id="password" type="password" autocomplete="off" name="password" [(ngModel)]="user.password" />
+            <input [ngClass]="{invalid: isPasswordEmpty}" [ngClass]="{invalid: password.dirty && password.touched && password.errors}" formControlName="password" id="password" type="password" autocomplete="off" name="password" [(ngModel)]="user.password" />
+            <ng-container *ngIf="password.dirty && password.touched && password.errors">
+                <span *ngIf="password.errors.minlength" class="error-message">Password should be at least 6
+                    characters</span>
+            </ng-container>
+            <ng-container *ngIf="isPasswordEmpty && password.errors">
+                <span *ngIf="password.errors.required" class="error-message">Username is required</span>
+            </ng-container>
         </div>
         <div class="account-box">
             <span class="account">Don't have account ?</span>
             <span (click)="register()" class="register">Register</span>
         </div>
         <button (click)="login()">Login</button>
-    </div>
+    </form>
 </div>

@@ -8,11 +8,11 @@
   background: rgb(240, 225, 199);
 }
 
-.welcome{
-    font-size: 50px;
-    font-weight: 900;
-    margin-bottom: 50px;
-    text-shadow: 2px 3px rgb(168, 168, 168);
+.welcome {
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  text-shadow: 2px 3px rgb(168, 168, 168);
 }
 
 .login-box {
@@ -27,72 +27,82 @@
   box-shadow: 2px 4px rgb(179, 179, 179);
 }
 
-span{
-    text-align: end;
+span {
+  text-align: end;
 }
 
 .input-box {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
 }
 
 label {
-    margin-bottom: 10px;
-    font-size: 25px;
+  margin-bottom: 10px;
+  font-size: 25px;
 }
 
 input {
-    border: none;
-    background: rgba(253, 253, 253, 0.5);
-    box-sizing: border-box;
-    padding: 10px 20px;
-    border-radius: 7px;
-    font-size: 23px;
+  border: 2px solid rgba(196, 196, 196, 0.5);
+  background: rgba(253, 253, 253, 0.5);
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 7px;
+  font-size: 23px;
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
-.account-box{
-    float: right;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
+.account-box {
+  float: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .account {
-    font-size: 20px;
-    margin-right: 10px;
+  font-size: 20px;
+  margin-right: 10px;
 }
 
-.register{
-    font-size: 23px;
-    font-weight: 600;
-    cursor: pointer;
+.register {
+  font-size: 23px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.register:hover{
-    color: rgb(8, 8, 94);
-    text-decoration: underline;
+.register:hover {
+  color: rgb(8, 8, 94);
+  text-decoration: underline;
 }
 
-button{
-    border: none;
-    border-radius: 7px;
-    padding: 9px 20px;
-    font-size: 27px;
-    background: rgb(248, 76, 176);
-    color: wheat;
-    font-weight: 600;
-    cursor: pointer;
+button {
+  border: none;
+  border-radius: 7px;
+  padding: 9px 20px;
+  font-size: 27px;
+  background: rgb(248, 76, 176);
+  color: wheat;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-button:hover{
-    background: rgb(248, 99, 186);
+button:hover {
+  background: rgb(248, 99, 186);
 }
 
-button:active{
-    background: rgb(248, 76, 176);
+button:active {
+  background: rgb(248, 76, 176);
+}
+
+.error-message {
+  text-align: start;
+  color: rgb(190, 0, 0);
+}
+
+.invalid {
+  border: 2px solid rgb(190, 0, 0);
 }

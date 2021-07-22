@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { TodoTask } from 'src/app/services/todo.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -8,6 +9,9 @@ import { TodoTask } from 'src/app/services/todo.service';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
+  todoForm = new FormGroup({
+    task: new FormControl('')
+  });
   todos: TodoTask = {
     task: '',
     isCompleted: false,
@@ -16,13 +20,21 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(value: string) {
-    this.todos = {
-      task: value,
-      isCompleted: false,
-      userId: this.todoService.todoList.user._id
-    };
+  get task(){
+    return this.todoForm.controls.task
+  }
 
-    this.todoService.createTodo(this.todos);
+  onSubmit() {
+    if(this.task.value != ''){
+      this.todos = {
+        task: this.task.value,
+        isCompleted: false,
+        userId: this.todoService.todoList.user._id
+      };
+      this.task.reset()
+      this.todoService.createTodo(this.todos);
+    }
+
+    
   }
 }

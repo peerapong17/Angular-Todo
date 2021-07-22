@@ -7,7 +7,7 @@ import { TodoComponent } from './todo/todo.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SharedModule,
+    ReactiveFormsModule,
     MainRoutingModule,
     FormsModule
   ]
