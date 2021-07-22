@@ -6,7 +6,7 @@
 
       <div class="list" *ngIf="todoService.todoList.todos.length !== 0; else second">
         <app-list *ngFor="let todo of todoService.todoList.todos; let i = index" [index]="i" [id]="todo._id!"
-          [task]="todo.task" [isCompleted]="todo.isCompleted"></app-list>
+          [task]="todo.task" [isCompleted]="todo.isCompleted" [createdAt]="todo.createdAt"></app-list>
       </div>
       <ng-template #second><span class="loading">Loding...</span></ng-template>
     </div>

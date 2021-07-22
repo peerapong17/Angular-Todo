@@ -8,7 +8,7 @@
 }
 
 input {
-  border: 3px solid rgb(250, 189, 255);
+  border: 7px solid rgb(238, 167, 245);
   background: rgb(252, 215, 255);
   padding: 17px 23px;
   border-radius: 12px;
@@ -38,10 +38,10 @@ button:active {
 }
 
 input:hover {
-  border: 3px solid rgb(246, 163, 253);
+  border: 7px solid rgb(240, 146, 248);
 }
 
 input:focus {
-  border: 3px solid rgb(246, 151, 255);
+  border: 7px solid rgb(232, 92, 245);
   outline: none;
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { TodoTask } from 'src/app/services/todo.service';
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -10,6 +9,7 @@ import { TodoTask } from 'src/app/services/todo.service';
 export class ListComponent implements OnInit {
   @Input() task: string = '';
   @Input() isCompleted: boolean = false;
+  @Input() createdAt:string = '';
   @Input() id: string = '';
   @Input() index: number = 0;
   isEditing: boolean = false;
@@ -17,7 +17,8 @@ export class ListComponent implements OnInit {
     task: '',
     isCompleted: false
   }
-  constructor(private todoService: TodoService) {}
+  constructor(public todoService: TodoService) {
+  }
 
   ngOnInit(): void {}
 

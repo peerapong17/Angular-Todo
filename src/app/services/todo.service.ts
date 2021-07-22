@@ -32,6 +32,8 @@ export interface Response {
 export class TodoService {
   pipe = new DatePipe('en-US')
   filteredListTodo: TodoResponse[] = []
+  formattedDate:string = ''
+  isToday: boolean =  false
   todoList: Response = {
     todos: [],
     user: <UserResponse>{},
@@ -40,23 +42,23 @@ export class TodoService {
   
 
   getTodo() {
-    const formattedDate = this.pipe.transform(new Date(), "shortDate")
+    this.formattedDate = this.pipe.transform(new Date(), "shortDate")!
     this.http
       .get<Response>('http://localhost:4000/todo', {
         withCredentials: true,
       })
       .subscribe((data) => {
-        this.filteredListTodo = data.todos.filter(todo=>{
-          const createdTodoDate = this.pipe.transform(Date.parse(todo.createdAt!), 'shortDate')
-          return formattedDate === createdTodoDate
-        })
         this.todoList = data;
-        this.todoList.todos = this.filteredListTodo
+        this.todoList.todos = data.todos.filter(todo=>{
+          const createdTodoDate = this.pipe.transform(Date.parse(todo.createdAt!), 'shortDate')
+          return this.formattedDate === createdTodoDate
+        })
       });
   }
 
   dateChange(changedDate: Date){
-    const formattedDate = this.pipe.transform(changedDate, "shortDate")
+    this.formattedDate = this.pipe.transform(changedDate, "shortDate")!
+    this.isToday = this.pipe.transform(changedDate, "shortDate") === this.pipe.transform(new Date(), 'shortDate')
     this.http
       .get<Response>('http://localhost:4000/todo', {
         withCredentials: true,
@@ -65,7 +67,7 @@ export class TodoService {
         this.todoList = data;
         this.todoList.todos = this.todoList.todos.filter(todo=>{
           const createdTodoDate = this.pipe.transform(Date.parse(todo.createdAt!), 'shortDate')
-          return formattedDate === createdTodoDate
+          return this.formattedDate === createdTodoDate
         })
       });
   }

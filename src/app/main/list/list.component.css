@@ -132,3 +132,19 @@ span {
   font-size: 23px;
   font-weight: 600;
 }
+
+span.input {
+  display: flex;
+  flex-direction: column;
+}
+
+span>span {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgb(97, 97, 97);
+  letter-spacing: 1px;
+}
+
+.completed{
+  background: rgb(214, 252, 158);
+}

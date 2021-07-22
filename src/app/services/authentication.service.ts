@@ -4,15 +4,19 @@ import { Router } from '@angular/router';
 import { TodoService } from './todo.service';
 
 export interface User {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient, private router: Router, private todoService:TodoService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private todoService: TodoService
+  ) {}
 
   login(user: User) {
     this.http
@@ -35,10 +39,10 @@ export class AuthenticationService {
       })
       .subscribe(
         (data) => {
-          if(data === "User successfully registered"){
-            this.router.navigateByUrl('todo')
+          if (data === 'User successfully registered') {
+            this.router.navigateByUrl('todo');
           } else {
-            alert(data)
+            alert(data);
           }
         },
         (err) => {
@@ -48,23 +52,18 @@ export class AuthenticationService {
   }
 
   logout() {
-    console.log('object')
+    console.log('object');
     this.http
       .get('http://localhost:4000/user/logout', {
         withCredentials: true,
       })
       .subscribe(
         (data) => {
-          console.log(data);
-          if (data === 'User successfully Logged out') {
-            this.router.navigateByUrl('login');
-            this.todoService.todoList.todos = []
-          }
+          this.router.navigateByUrl('login');
         },
         (err) => {
           console.log(err);
         }
       );
-      
   }
 }
