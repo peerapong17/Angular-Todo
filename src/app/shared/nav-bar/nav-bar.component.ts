@@ -1,3 +1,4 @@
+import { TodoService } from 'src/app/services/todo.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -8,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private authentication:AuthenticationService) { }
+  constructor(private authentication:AuthenticationService, public todoService:TodoService) { }
 
   ngOnInit(): void {
   }

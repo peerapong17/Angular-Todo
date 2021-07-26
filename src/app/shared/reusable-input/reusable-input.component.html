@@ -1,0 +1,17 @@
+<div class="container">
+    <label [for]="label">{{label}}:</label>
+    <input [ngClass]="{invalid: isEmpty}" [ngClass]="{invalid: showError()}" [formControl]="control" class="error"
+        [type]="type" autocomplete="off" [id]="label" [name]="label" />
+    <div class="error-container">
+        <ng-container *ngIf="showError()">
+            <span *ngIf="errors.pattern" class="error-message">- {{label}} is not a valid {{label}}.<br> - Please do not
+                enter a special characters</span>
+            <span *ngIf="errors.minlength" class="error-message">- {{label}} should be at least {{minLength}}
+                characters</span>
+            <span *ngIf="errors.noneUniqueEmail" class="error-message">- {{label}} is already in-use</span>
+        </ng-container>
+        <ng-container *ngIf="isEmpty && errors">
+            <span *ngIf="errors.required" class="error-message">{{label}} is required</span>
+        </ng-container>
+    </div>
+</div>

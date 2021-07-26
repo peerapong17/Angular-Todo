@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/services/authentication.service';
+import { UserLogin, UserRegister } from 'src/app/services/authentication.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -11,10 +11,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   userForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.pattern("[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}")]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    username: new FormControl('',[Validators.required]),
+    password: new FormControl('', [Validators.required]),
   });
-  user:User = {
+  user:UserLogin = {
     username: '',
     password: ''
   }
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    if(this.username.valid && this.password.valid){
+    if(this.userForm.valid){
       this.user = {
         username: this.username.value,
         password: this.password.value

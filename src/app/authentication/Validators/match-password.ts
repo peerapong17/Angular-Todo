@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 export class MatchPassword implements Validator {
   validate(formGroup: AbstractControl) {
     const { password, passwordConfirmation } = formGroup.value;
-    console.log(formGroup.value.password)
     if (password === passwordConfirmation) {
       return null;
     } else {

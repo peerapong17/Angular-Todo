@@ -1,0 +1,43 @@
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-box {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+  
+  input {
+    border: 2px solid rgba(196, 196, 196, 0.5);
+    background: rgba(253, 253, 253, 0.5);
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-size: 23px;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  .error-message {
+    display: block;
+    text-align: start;
+    color: rgb(190, 0, 0);
+  }
+  
+  .invalid {
+    border: 2px solid rgb(190, 0, 0);
+  }
+
+  .error-container{
+    height: auto;
+  }
+  

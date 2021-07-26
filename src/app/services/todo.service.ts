@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+
 export interface TodoResponse {
   _id: string;
   task: string;
@@ -12,7 +13,7 @@ export interface TodoResponse {
 export interface UserResponse {
   _id: string;
   username: string;
-  createdAt: string;
+  email: string;
 }
 
 export interface TodoTask {

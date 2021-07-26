@@ -2,66 +2,21 @@
     <span class="welcome">Welcome</span>
     <form [formGroup]="userForm" class="login-box">
         <div class="input-box">
-            <label for="username">Username:</label>
-            <input [ngClass]="{invalid: isUsernameEmpty}"
-                [ngClass]="{invalid: username.dirty && username.touched && username.errors}" formControlName="username"
-                class="error" type="email" autocomplete="off" name="username" />
-            <ng-container *ngIf="username.dirty && username.touched && username.errors">
-                <span *ngIf="username.errors.pattern" class="error-message">Please do not enter a special characters</span>
-            </ng-container>
-            <ng-container *ngIf="username.dirty && username.touched && username.errors">
-                <span *ngIf="username.errors.minlength" class="error-message">Username should be at least 6 characters</span>
-            </ng-container>
-            <ng-container *ngIf="isUsernameEmpty && username.errors">
-                <span *ngIf="username.errors.required" class="error-message">Username is required</span>
-            </ng-container>
+            <app-reusable-input label="Username" [control]="username" [isEmpty]="isUsernameEmpty" minLength="4">
+            </app-reusable-input>
         </div>
         <div class="input-box">
-            <label for="email">Email:</label>
-            <input [ngClass]="{invalid: isEmailEmpty}"
-                [ngClass]="{invalid: email.dirty && email.touched && email.errors}" formControlName="email"
-                class="error" type="email" autocomplete="off" name="email" />
-            <ng-container *ngIf="email.dirty && email.touched && email.errors">
-                <span *ngIf="email.errors.pattern" class="error-message">Email is not valid</span>
-            </ng-container>
-            <ng-container *ngIf="isEmailEmpty && email.errors">
-                <span *ngIf="email.errors.required" class="error-message">Email is required</span>
-            </ng-container>
+            <app-reusable-input type="email" label="Email" [control]="email" [isEmpty]="isEmailEmpty">
+            </app-reusable-input>
         </div>
         <div class="input-box">
-            <label for="username">Password:</label>
-            <input [ngClass]="{invalid: isPasswordEmpty}"
-            [ngClass]="{invalid: !password.errors && userForm.errors}"
-                [ngClass]="{invalid: password.dirty && password.touched && password.errors}" formControlName="password"
-                type="password" autocomplete="off" name="username" />
-            <ng-container *ngIf="password.dirty && password.touched && password.errors">
-                <span *ngIf="password.errors.minlength" class="error-message">Password should be at least 6
-                    characters</span>
-            </ng-container>
-            <ng-container *ngIf="isPasswordEmpty && password.errors">
-                <span *ngIf="password.errors.required" class="error-message">Password is required</span>
-            </ng-container>
-            <ng-container *ngIf="!password.errors && userForm.errors">
-                <span *ngIf="userForm.errors.passwordDontMatch" class="error-message">Password is
-                    not match</span>
-            </ng-container>
+            <app-reusable-input type="password" label="Password" [control]="password" [isEmpty]="isPasswordEmpty" minLength="6">
+            </app-reusable-input>
         </div>
         <div class="input-box">
-            <label for="passwordConfirmation">PasswordConfirmation:</label>
-            <input [ngClass]="{invalid: isPasswordConfirmationEmpty}"
-            [ngClass]="{invalid: !passwordConfirmation.errors && userForm.errors}"
-                [ngClass]="{invalid: passwordConfirmation.dirty && passwordConfirmation.touched && passwordConfirmation.errors}"
-                formControlName="passwordConfirmation" type="password" autocomplete="off" name="passwordConfirmation" />
-            <ng-container
-                *ngIf="passwordConfirmation.dirty && passwordConfirmation.touched && passwordConfirmation.errors">
-                <span *ngIf="passwordConfirmation.errors.minlength" class="error-message">PasswordConfirmation should be
-                    at least 6
-                    characters</span>
-            </ng-container>
-            <ng-container *ngIf="isPasswordConfirmationEmpty && passwordConfirmation.errors">
-                <span *ngIf="passwordConfirmation.errors.required" class="error-message">PasswordConfirmation is
-                    required</span>
-            </ng-container>
+            <app-reusable-input type="password" label="PasswordConfirmation" [control]="passwordConfirmation"
+                [isEmpty]="isPasswordConfirmationEmpty" minLength="6">
+            </app-reusable-input>
             <ng-container *ngIf="!passwordConfirmation.errors && userForm.errors">
                 <span *ngIf="userForm.errors.passwordDontMatch" class="error-message">Password is
                     not match</span>
@@ -74,3 +29,6 @@
         <button (click)="register()">Register</button>
     </form>
 </div>
+<ng-container *ngIf="email.errors">
+    {{email.errors.noneUniqueEmail!}}
+</ng-container>

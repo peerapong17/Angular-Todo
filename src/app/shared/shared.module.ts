@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ReusableInputComponent } from './reusable-input/reusable-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    NavBarComponent
+    NavBarComponent,
+    ReusableInputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
-    NavBarComponent
+    NavBarComponent,
+    ReusableInputComponent
   ]
 })
 export class SharedModule { }
