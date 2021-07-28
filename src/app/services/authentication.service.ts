@@ -21,6 +21,11 @@ export interface UserLogin {
 export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) {}
 
+  googleSignin() {
+     var win = window.open('http://localhost:4000/auth/google', '_self')
+     console.log(win)
+  }
+
   login(user: UserLogin) {
     this.http
       .post('http://localhost:4000/user/login', user, {

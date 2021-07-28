@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
   isUsernameEmpty: boolean = false;
   isPasswordEmpty: boolean = false
-  constructor(private router:Router, private authentication:AuthenticationService) { }
+  constructor(private router:Router, public authService:AuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         username: this.username.value,
         password: this.password.value
       }
-      this.authentication.login(this.user)
+      this.authService.login(this.user)
     }
     if(this.username.value === ''){
       this.isUsernameEmpty = true
@@ -53,5 +53,4 @@ export class LoginComponent implements OnInit {
   register(){
     this.router.navigateByUrl('/register')
   }
-
 }

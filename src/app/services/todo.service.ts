@@ -49,6 +49,7 @@ export class TodoService {
         withCredentials: true,
       })
       .subscribe((data) => {
+        console.log(data)
         this.todoList = data;
         this.todoList.todos = data.todos.filter(todo=>{
           const createdTodoDate = this.pipe.transform(Date.parse(todo.createdAt!), 'shortDate')

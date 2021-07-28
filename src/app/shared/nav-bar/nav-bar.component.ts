@@ -8,8 +8,9 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor(private authentication:AuthenticationService, public todoService:TodoService) { }
+  firstName:string = ''
+  constructor(private authentication:AuthenticationService, public todoService:TodoService) {
+  }
 
   ngOnInit(): void {
   }

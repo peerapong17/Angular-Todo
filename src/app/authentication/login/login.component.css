@@ -77,3 +77,12 @@ button:hover {
 button:active {
   background: rgb(248, 76, 176);
 }
+
+.google-btn{
+  background: rgb(245, 228, 198);
+  color: rgb(51, 51, 51);
+}
+
+.google-btn:hover {
+  background: rgb(241, 230, 210);
+}
