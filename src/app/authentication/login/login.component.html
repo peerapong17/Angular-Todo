@@ -5,13 +5,17 @@
             <app-reusable-input label="Email" [control]="username" [isEmpty]="isUsernameEmpty"></app-reusable-input>
         </div>
         <div class="input-box">
-            <app-reusable-input type="password" label="Password" [control]="password" [isEmpty]="isPasswordEmpty"></app-reusable-input>
+            <app-reusable-input type="password" label="Password" [control]="password" [isEmpty]="isPasswordEmpty">
+            </app-reusable-input>
         </div>
         <div class="account-box">
             <span class="account">Don't have account ?</span>
             <span (click)="register()" class="register">Register</span>
         </div>
         <button (click)="login()">Login</button>
-        <button class="google-btn" (click)="authService.googleSignin()">SIgnin With Google</button>
+        <button class="google-btn" (click)="authService.googleSignin()">
+            <img src="../../../assets/images/google.jpg" alt="Google'Logo" width="30" height="30">
+            Signin With Google
+        </button>
     </form>
 </div>

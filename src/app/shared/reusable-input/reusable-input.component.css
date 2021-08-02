@@ -15,7 +15,7 @@
   }
   
   input {
-    border: 2px solid rgba(196, 196, 196, 0.5);
+    border: 2px solid rgba(228, 139, 231, 0.5);
     background: rgba(253, 253, 253, 0.5);
     box-sizing: border-box;
     padding: 10px 20px;
@@ -30,6 +30,7 @@
   .error-message {
     display: block;
     text-align: start;
+    margin-top: 5px;
     color: rgb(190, 0, 0);
   }
   

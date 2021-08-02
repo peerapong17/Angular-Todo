@@ -26,6 +26,14 @@ export class ListComponent implements OnInit {
     this.isEditing = !this.isEditing
   }
 
+  onBoxChecked(value: {checked: boolean}){
+    this.data = {
+      task: this.task,
+      isCompleted: value.checked
+    }
+    this.todoService.updateTodo(this.id, this.data)
+  }
+
   onUpdate() {
     this.data = {
       task: this.task,

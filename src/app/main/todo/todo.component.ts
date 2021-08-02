@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -8,14 +9,14 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
-  date:Date = new Date()
+  date = new FormControl(new Date())
   constructor(public todoService: TodoService) {
     this.todoService.getTodo();
   }
 
   ngOnInit(): void {}
 
-  onDateChange(){
-    this.todoService.dateChange(this.date)
+  onDateChange(date: Date){
+    this.todoService.dateChange(date)
   }
 }

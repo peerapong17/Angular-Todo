@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { TodoService } from './todo.service';
 import { pluck } from 'rxjs/operators';
 
 export interface UserRegister {
@@ -22,13 +21,12 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) {}
 
   googleSignin() {
-     var win = window.open('http://localhost:4000/auth/google', '_self')
-     console.log(win)
+     window.open('http://localhost:4000/auth/google', '_self')
   }
 
   login(user: UserLogin) {
     this.http
-      .post('http://localhost:4000/user/login', user, {
+      .post<string>('http://localhost:4000/user/login', user, {
         withCredentials: true,
       })
       .pipe(pluck('message'))

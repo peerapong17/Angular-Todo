@@ -3,16 +3,23 @@
   <div class="main-container">
     <div class="todo-container">
       <app-form></app-form>
-
-      <div class="list" *ngIf="todoService.todoList.todos.length !== 0; else second">
-        <app-list *ngFor="let todo of todoService.todoList.todos; let i = index" [index]="i" [id]="todo._id!"
-          [task]="todo.task" [isCompleted]="todo.isCompleted" [createdAt]="todo.createdAt"></app-list>
-      </div>
-      <ng-template #second><span class="loading">Loding...</span></ng-template>
+      <span *ngIf="todoService.isLoading; else second" class="loading"><mat-spinner></mat-spinner></span>
+      <ng-template #second>
+        <ng-container *ngIf="todoService.filteredListTodo.length">
+          <div class="list">
+            <app-list *ngFor="let todo of todoService.filteredListTodo; let i = index" [index]="i" [id]="todo._id!"
+              [task]="todo.task" [isCompleted]="todo.isCompleted" [createdAt]="todo.createdAt"></app-list>
+          </div>
+        </ng-container>
+        <span class="no-task" *ngIf="todoService.filteredListTodo.length == 0">There is no task...</span>
+      </ng-template>
+      <!-- <ng-template #second><span class="loading">Loding...</span></ng-template> -->
     </div>
-    <form class="date-container">
-      <label for="data">Date:</label>
-      <input type="date" id="data" name="data" (change)="onDateChange()"  [(ngModel)]="date" />
-    </form>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput (dateInput)="onDateChange($event.value)" [matDatepicker]="picker" [formControl]="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
   </div>
 </div>

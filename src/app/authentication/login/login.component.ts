@@ -1,13 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLogin, UserRegister } from 'src/app/services/authentication.service';
+import { UserLogin } from 'src/app/services/authentication.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  // animations: [
+  //   state(
+  //     'open',
+  //     style({
+  //       height: '200px',
+  //       opacity: 1,
+  //       backgroundColor: 'yellow',
+  //     })
+  //   ),
+  // ],
 })
 export class LoginComponent implements OnInit {
   userForm = new FormGroup({
