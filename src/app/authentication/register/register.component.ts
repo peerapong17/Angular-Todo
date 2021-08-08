@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserRegister } from 'src/app/services/authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  providers: [MessageService],
 })
 export class RegisterComponent implements OnInit {
   userForm = new FormGroup(
@@ -47,11 +49,13 @@ export class RegisterComponent implements OnInit {
   isEmailEmpty: boolean = false;
   isPasswordEmpty: boolean = false;
   isPasswordConfirmationEmpty: boolean = false;
+  loading: boolean = false;
   constructor(
     private router: Router,
     private matchPassword: MatchPassword,
     private uniqueEmail: UniqueEmail,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private messageService: MessageService
   ) {}
 
   get username() {
@@ -77,13 +81,35 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (this.userForm.valid) {
-      console.log('sent');
+      this.loading = true;
       this.user = {
         email: this.email.value,
         username: this.username.value,
         password: this.password.value,
       };
-      this.authService.register(this.user);
+      this.authService.register(this.user).subscribe(
+        (data) => {
+          if (data === 'User successfully created') {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Error',
+              detail: data,
+            });
+            this.loading = false;
+            setTimeout(() => {
+              this.router.navigateByUrl('login');
+            }, 3000);
+          }
+        },
+        (err) => {
+          this.loading = false;
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: err.error.message,
+          });
+        }
+      );
     }
 
     if (this.username.value === '') {

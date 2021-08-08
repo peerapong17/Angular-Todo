@@ -12,10 +12,18 @@
             <span class="account">Don't have account ?</span>
             <span (click)="register()" class="register">Register</span>
         </div>
-        <button (click)="login()">Login</button>
-        <button class="google-btn" (click)="authService.googleSignin()">
-            <img src="../../../assets/images/google.jpg" alt="Google'Logo" width="30" height="30">
-            Signin With Google
-        </button>
+        <ng-container>
+            <p-progressSpinner *ngIf="loading;else elseblock" [style]="{display: 'flex',width: '50px', height: '50px'}"
+                strokeWidth="4" animationDuration="3">
+            </p-progressSpinner>
+            <ng-template #elseblock>
+                <button (click)="login()">Login</button>
+                <button class="google-btn" (click)="authService.googleSignin()">
+                    <img src="../../../assets/images/google.jpg" alt="Google'Logo" width="20" height="20">
+                    Signin With Google
+                </button>
+            </ng-template>
+        </ng-container>
     </form>
+    <p-toast position="bottom-center"></p-toast>
 </div>

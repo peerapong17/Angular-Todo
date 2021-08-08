@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { TodoComponent } from './todo/todo.component';
-
+import { ToastModule } from 'primeng/toast';
 import { SharedModule } from '../shared/shared.module';
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
@@ -12,7 +12,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatProgressSpinnerModule  } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {ButtonModule} from 'primeng/button';
+import {RippleModule} from 'primeng/ripple';
 
 @NgModule({
   declarations: [TodoComponent, FormComponent, ListComponent],
@@ -26,7 +28,10 @@ import {MatProgressSpinnerModule  } from '@angular/material/progress-spinner';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatProgressSpinnerModule 
+    MatProgressSpinnerModule,
+    ToastModule,
+    ButtonModule,
+    RippleModule
   ],
 })
 export class MainModule {}

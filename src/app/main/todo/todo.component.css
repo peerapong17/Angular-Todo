@@ -45,3 +45,16 @@
     font-size: 50px;
     font-weight: 600;
 }
+
+button {
+    min-width: 10rem;
+    margin-right: .5rem;
+}
+
+.confirm-box {
+    display: flex;
+}
+
+.p-text-center{
+    text-align: center;
+}

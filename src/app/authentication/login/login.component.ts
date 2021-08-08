@@ -3,72 +3,75 @@ import { Router } from '@angular/router';
 import { UserLogin } from 'src/app/services/authentication.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  // animations: [
-  //   state(
-  //     'open',
-  //     style({
-  //       height: '200px',
-  //       opacity: 1,
-  //       backgroundColor: 'yellow',
-  //     })
-  //   ),
-  // ],
+  providers: [MessageService],
 })
 export class LoginComponent implements OnInit {
   userForm = new FormGroup({
-    username: new FormControl('',[Validators.required]),
+    username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
-  user:UserLogin = {
+  user: UserLogin = {
     username: '',
-    password: ''
-  }
+    password: '',
+  };
   isUsernameEmpty: boolean = false;
-  isPasswordEmpty: boolean = false
-  constructor(private router:Router, public authService:AuthenticationService) { }
+  isPasswordEmpty: boolean = false;
+  loading: boolean = false;
+  constructor(
+    private router: Router,
+    public authService: AuthenticationService,
+    private messageService: MessageService
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  get username() {
+    return this.userForm.controls.username;
   }
 
-  get username(){
-    return this.userForm.controls.username
+  get password() {
+    return this.userForm.controls.password;
   }
 
-  get password(){
-    return this.userForm.controls.password
-  }
-
-
-  login(){
-    if(this.userForm.valid){
+  login() {
+    if (this.userForm.valid) {
+      this.loading = true;
       this.user = {
         username: this.username.value,
-        password: this.password.value
-      }
-      this.authService.login(this.user)
+        password: this.password.value,
+      };
+      this.authService.login(this.user).subscribe(
+        (data) => {
+          if (data === 'User seccessfully logged in') {
+            this.router.navigateByUrl('todo');
+            this.loading = false;
+          }
+        },
+        (err) => {
+          this.loading = false;
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: err.error.message,
+          });
+        }
+      );
     }
-    if(this.username.value === ''){
-      this.isUsernameEmpty = true
+    if (this.username.value === '') {
+      this.isUsernameEmpty = true;
     }
-    if(this.password.value === ''){
-      this.isPasswordEmpty = true
+    if (this.password.value === '') {
+      this.isPasswordEmpty = true;
     }
   }
 
-  register(){
-    this.router.navigateByUrl('/register')
+  register() {
+    this.router.navigate(['register']);
   }
 }

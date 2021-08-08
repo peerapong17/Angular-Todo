@@ -10,7 +10,8 @@
             </app-reusable-input>
         </div>
         <div class="input-box">
-            <app-reusable-input type="password" label="Password" [control]="password" [isEmpty]="isPasswordEmpty" minLength="6">
+            <app-reusable-input type="password" label="Password" [control]="password" [isEmpty]="isPasswordEmpty"
+                minLength="6">
             </app-reusable-input>
         </div>
         <div class="input-box">
@@ -26,9 +27,14 @@
             <span class="account">Already have account ?</span>
             <span (click)="login()" class="register">Login</span>
         </div>
-        <button (click)="register()">Register</button>
+        <ng-container>
+            <p-progressSpinner *ngIf="loading;else elseblock" [style]="{display: 'flex',width: '50px', height: '50px'}"
+                strokeWidth="4" animationDuration="3">
+            </p-progressSpinner>
+            <ng-template #elseblock>
+                <button (click)="register()">Register</button>
+            </ng-template>
+        </ng-container>
     </form>
+    <p-toast position="bottom-center"></p-toast>
 </div>
-<ng-container *ngIf="email.errors">
-    {{email.errors.noneUniqueEmail!}}
-</ng-container>

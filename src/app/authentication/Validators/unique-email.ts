@@ -23,7 +23,7 @@ export class UniqueEmail implements AsyncValidator {
     this.user = {
       email: value,
     };
-    return this.http.post('http://localhost:4000/user', this.user).pipe(
+    return this.http.post('http://localhost:4000/auth', this.user).pipe(
       map(() => {
         return null;
       }),

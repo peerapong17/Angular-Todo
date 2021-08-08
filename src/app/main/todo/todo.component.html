@@ -1,9 +1,11 @@
 <div class="container">
-  <app-nav-bar></app-nav-bar>
+  <app-nav-bar (onLogout)="onLogout()"></app-nav-bar>
   <div class="main-container">
     <div class="todo-container">
       <app-form></app-form>
-      <span *ngIf="todoService.isLoading; else second" class="loading"><mat-spinner></mat-spinner></span>
+      <span *ngIf="todoService.isLoading; else second" class="loading">
+        <mat-spinner></mat-spinner>
+      </span>
       <ng-template #second>
         <ng-container *ngIf="todoService.filteredListTodo.length">
           <div class="list">
@@ -21,5 +23,24 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    <p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+      <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+          <div class="p-text-center">
+            <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+            <h1>Are you sure?</h1>
+            <p>Confirm to proceed</p>
+          </div>
+          <div class="confirm-box">
+            <div>
+              <button type="button" pButton pRipple (click)="onConfirm()" label="Yes" class="p-button-primary"></button>
+            </div>
+            <div>
+              <button type="button" pButton pRipple (click)="onReject()" label="No" class="p-button-secondary"></button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-toast>
   </div>
 </div>

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,6 +5,8 @@ import { AutheticationRoutingModule } from './authetication-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -14,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    ProgressSpinnerModule,
+    ToastModule
   ],
 })
 export class AutheticationModule {}
