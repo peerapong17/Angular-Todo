@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
         username: this.username.value,
         password: this.password.value,
       };
-      this.authService.register(this.user).subscribe(
+      this.authService.registerUser(this.user).subscribe(
         (data) => {
           if (data === 'User successfully created') {
             this.messageService.add({

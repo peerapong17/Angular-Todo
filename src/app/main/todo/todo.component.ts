@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
 import { MessageService } from 'primeng/api';
@@ -38,7 +38,7 @@ export class TodoComponent implements OnInit {
   }
 
   onConfirm() {
-    this.authentication.logout().subscribe(
+    this.authentication.logoutUser().subscribe(
       (data) => {
         if (data === 'User successfully loged out') {
           this.router.navigate(['login']);
