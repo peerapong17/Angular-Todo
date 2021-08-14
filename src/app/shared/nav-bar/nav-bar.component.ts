@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { TodoService } from 'src/app/services/todo.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthenticationService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',

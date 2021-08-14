@@ -24,8 +24,7 @@
             </ng-container>
         </div>
         <div class="account-box">
-            <span class="account">Already have account ?</span>
-            <span (click)="login()" class="register">Login</span>
+            <a [routerLink]="['/login']" >Already have account ?</a>
         </div>
         <ng-container>
             <p-progressSpinner *ngIf="loading;else elseblock" [style]="{display: 'flex',width: '50px', height: '50px'}"

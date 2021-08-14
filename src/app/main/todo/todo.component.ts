@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
 import { MessageService } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthenticationService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

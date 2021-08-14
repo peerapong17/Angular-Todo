@@ -1,0 +1,7 @@
+<div class="container">
+    <form #form="ngForm" class="login-box">
+        <label for="email">Email</label>
+        <input name="email" type="text" [(ngModel)]="email" autocomplete="off">
+        <button (click)="enterEmail(form)">OK</button>
+    </form>
+</div>

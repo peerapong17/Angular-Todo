@@ -1,9 +1,9 @@
-import { AuthenticationService } from './../../services/authentication.service';
+import { AuthenticationService } from '../../services/auth.service';
 import { UniqueEmail } from '../Validators/unique-email';
 import { MatchPassword } from './../Validators/match-password';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserRegister } from 'src/app/services/authentication.service';
+import { UserRegister } from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 
@@ -16,27 +16,26 @@ import { MessageService } from 'primeng/api';
 export class RegisterComponent implements OnInit {
   userForm = new FormGroup(
     {
-      email: new FormControl(
-        '',
-        [
+      email: new FormControl('', {
+        validators: [
           Validators.required,
           Validators.pattern('[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}'),
         ],
-        [this.uniqueEmail.validate]
-      ),
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.pattern('^[a-zA-Z0-9]{4,30}$'),
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
-      passwordConfirmation: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
+        asyncValidators: [this.uniqueEmail.validate],
+      }),
+      username: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern('^[a-zA-Z0-9]{4,30}$'),
+        ],
+      }),
+      password: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(6)],
+      }),
+      passwordConfirmation: new FormControl('', {
+        validators: [Validators.required, Validators.minLength(6)],
+      }),
     },
     { validators: [this.matchPassword.validate] }
   );

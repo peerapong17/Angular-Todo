@@ -1,0 +1,101 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(240, 225, 199);
+}
+
+.input-box{
+  margin-top: 20px;
+}
+
+.welcome {
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  text-shadow: 2px 3px rgb(168, 168, 168);
+}
+
+.login-box {
+  width: 25%;
+  height: 50%;
+  background: rgb(241, 179, 190);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 4px rgb(179, 179, 179);
+}
+
+input:focus {
+  outline: none;
+}
+
+.account-box {
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+a{
+  font-size: 15px;
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.account {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 7px;
+  padding: 9px 20px;
+  font-size: 27px;
+  background: rgb(248, 76, 176);
+  box-shadow: 1px 2px rgb(143, 143, 143);
+  color: wheat;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button:hover {
+  background: rgb(248, 99, 186);
+}
+
+button:active {
+  background: rgb(248, 76, 176);
+}
+
+.google-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(240, 240, 240);
+  color: rgb(51, 51, 51);
+  box-shadow: 1px 2px rgb(145, 145, 145);
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+img{
+  margin-right: 30px;
+}
+
+.google-btn:hover {
+  background: rgb(235, 235, 235);
+}

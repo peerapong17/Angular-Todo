@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLogin } from 'src/app/services/authentication.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserLogin } from 'src/app/services/auth.service';
+import { AuthenticationService } from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
@@ -13,14 +13,7 @@ import { Subscription } from 'rxjs';
   providers: [MessageService],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  userForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-  });
-  user: UserLogin = {
-    username: '',
-    password: '',
-  };
+  userForm: FormGroup;
   isUsernameEmpty: boolean = false;
   isPasswordEmpty: boolean = false;
   loading: boolean = false;
@@ -29,7 +22,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     public authService: AuthenticationService,
     private messageService: MessageService
-  ) {}
+  ) {
+    this.userForm = new FormGroup({
+      username: new FormControl('', { validators: [Validators.required] }),
+      password: new FormControl('', { validators: [Validators.required] }),
+    });
+  }
 
   ngOnInit(): void {
     this.loginSub = this.authService.login$.subscribe((login) => {
@@ -50,11 +48,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   login() {
     if (this.userForm.valid) {
       this.loading = true;
-      this.user = {
+      const user: UserLogin = {
         username: this.username.value,
         password: this.password.value,
       };
-      this.authService.loginUser(this.user).subscribe(
+      this.authService.loginUser(user).subscribe(
         (data) => {
           if (data === 'User seccessfully logged in') {
             // this.router.navigate(['todo']);
@@ -77,10 +75,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.password.value === '') {
       this.isPasswordEmpty = true;
     }
-  }
-
-  register() {
-    this.router.navigate(['register']);
   }
 
   ngOnDestroy() {
