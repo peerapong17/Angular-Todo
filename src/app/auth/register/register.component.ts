@@ -39,11 +39,6 @@ export class RegisterComponent implements OnInit {
     },
     { validators: [this.matchPassword.validate] }
   );
-  user: UserRegister = {
-    email: '',
-    username: '',
-    password: '',
-  };
   isUsernameEmpty: boolean = false;
   isEmailEmpty: boolean = false;
   isPasswordEmpty: boolean = false;
@@ -81,12 +76,12 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.userForm.valid) {
       this.loading = true;
-      this.user = {
+      const user: UserRegister = {
         email: this.email.value,
         username: this.username.value,
         password: this.password.value,
       };
-      this.authService.registerUser(this.user).subscribe(
+      this.authService.registerUser(user).subscribe(
         (data) => {
           if (data === 'User successfully created') {
             this.messageService.add({

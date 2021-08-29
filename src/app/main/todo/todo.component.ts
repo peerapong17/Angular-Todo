@@ -40,9 +40,9 @@ export class TodoComponent implements OnInit {
   onConfirm() {
     this.authentication.logoutUser().subscribe(
       (data) => {
-        if (data === 'User successfully loged out') {
-          this.router.navigate(['login']);
-        }
+        localStorage.clear();
+        this.todoService.todoList.todos = [];
+        this.router.navigate(['login']);
       },
       (err) => {
         console.log(err);

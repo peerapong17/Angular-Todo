@@ -54,10 +54,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       };
       this.authService.loginUser(user).subscribe(
         (data) => {
-          if (data === 'User seccessfully logged in') {
-            // this.router.navigate(['todo']);
-            this.loading = false;
-          }
+          localStorage.setItem('token', JSON.stringify(data.accessToken));
+          this.loading = false;
         },
         (err) => {
           this.loading = false;

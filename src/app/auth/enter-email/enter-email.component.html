@@ -2,6 +2,9 @@
     <form #form="ngForm" class="login-box">
         <label for="email">Email</label>
         <input name="email" type="text" [(ngModel)]="email" autocomplete="off">
+        <div class="login">
+            <span [routerLink]="['/login']">Login</span>
+        </div>
         <button (click)="enterEmail(form)">OK</button>
     </form>
 </div>

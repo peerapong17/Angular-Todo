@@ -56,6 +56,9 @@ export class TodoService {
     this.http
       .get<Response>('http://localhost:4000/todo', {
         withCredentials: true,
+        headers: {
+          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token')!),
+        },
       })
       .subscribe((data) => {
         this.isLoading = false;
@@ -81,16 +84,26 @@ export class TodoService {
 
   createTodo(data: TodoTask) {
     this.http
-      .post<TodoResponse>('http://localhost:4000/todo/create', data)
+      .post<TodoResponse>('http://localhost:4000/todo/create', data, {
+        withCredentials: true,
+        headers: {
+          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token')!),
+        },
+      })
       .subscribe((data) => {
-        this.todoList.todos.push(data)
+        this.todoList.todos.push(data);
         this.filteredListTodo.push(data);
       });
   }
 
   updateTodo(id: string, task: TodoTask) {
     this.http
-      .put(`http://localhost:4000/todo/update/${id}`, task)
+      .put(`http://localhost:4000/todo/update/${id}`, task, {
+        withCredentials: true,
+        headers: {
+          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token')!),
+        },
+      })
       .subscribe((data) => {
         console.log(data);
       });
@@ -103,7 +116,12 @@ export class TodoService {
 
   deleteTodo(id: string, index: number) {
     this.http
-      .delete<string>(`http://localhost:4000/todo/delete/${id}`)
+      .delete<string>(`http://localhost:4000/todo/delete/${id}`, {
+        withCredentials: true,
+        headers: {
+          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token')!),
+        },
+      })
       .subscribe((data) => {
         console.log(data);
       });

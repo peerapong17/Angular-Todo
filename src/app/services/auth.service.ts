@@ -26,11 +26,21 @@ export class AuthenticationService {
     window.open('http://localhost:4000/auth/google', '_self');
   }
 
-  loginUser(user: UserLogin): Observable<string> {
+  loginUser(
+    user: UserLogin
+  ): Observable<{
+    message: string;
+    accessToken: string;
+    authenticaated: boolean;
+  }> {
     return this.http
-      .post<string>('http://localhost:4000/auth/login', user, {
-        withCredentials: true,
-      })
+      .post<{ message: string; accessToken: string; authenticaated: boolean }>(
+        'http://localhost:4000/auth/login',
+        user,
+        {
+          withCredentials: true,
+        }
+      )
       .pipe(
         tap(() => {
           this.login$.next(true);

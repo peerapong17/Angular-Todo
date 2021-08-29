@@ -3,24 +3,19 @@
     flex-direction: column;
   }
   
-  .input-box {
-    display: flex;
-    flex-direction: column;
-    height: 100px;
-  }
-  
   label {
     margin-bottom: 10px;
-    font-size: 25px;
+    font-size: 19px;
   }
   
   input {
-    border: 2px solid rgba(228, 139, 231, 0.5);
-    background: rgba(253, 253, 253, 0.5);
+    border: 2px solid #F7D8DE;
+    background: #F7D8DE;
     box-sizing: border-box;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 7px;
-    font-size: 23px;
+    height: 42px;
+    font-size: 19px;
   }
   
   input:focus {

@@ -9,7 +9,7 @@
 }
 
 .input-box{
-  margin-top: 20px;
+  margin-top: 17px;
 }
 
 .welcome {
@@ -21,18 +21,14 @@
 
 .login-box {
   width: 25%;
-  height: 50%;
+  height: auto;
   background: rgb(241, 179, 190);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 10px;
   box-shadow: 2px 4px rgb(179, 179, 179);
-}
-
-input:focus {
-  outline: none;
 }
 
 .account-box {
@@ -41,7 +37,7 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 a{
@@ -52,11 +48,6 @@ a{
 
 a:hover{
   text-decoration: underline;
-}
-
-.account {
-  font-size: 20px;
-  margin-right: 10px;
 }
 
 button {
